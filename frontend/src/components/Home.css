@@ -1,0 +1,11 @@
+.homeDescription {
+    font-size: 14px;
+    background-color: aliceblue;
+    padding: 30px 30px 30px 30px;
+}
+
+img {
+    height: 50%;
+    max-height: 300px;
+    width: 100%;
+}
