@@ -1,0 +1,34 @@
+{
+    "menuItems" : [
+     {
+       "id": "1",
+        "category": "Appetizer",
+        "itemName": "Chapati Roll (Veg Roll)", 
+        "Price": "$8.99"
+     },
+     {
+        "id": "2",
+        "category": "Appetizer",
+        "itemName": "Chicken Lollipop", 
+        "Price": "$10.99"
+     },
+     {
+        "id": "3",
+        "category": "Appetizer",
+        "itemName": "Hot and Sour Soup", 
+        "Price": "$6.99"
+     },
+     {
+        "id": "4",
+        "category": "Entree",
+        "itemName": "Garlic Chicken with Hakka Noodles", 
+        "Price": "$15.99"
+     },
+     {
+        "id": "5",
+        "category": "Dessert",
+        "itemName": "Honey Noodles with Vanilla Ice Cream", 
+        "Price": "$9.99"
+     }
+    ]
+}
