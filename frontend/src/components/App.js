@@ -4,26 +4,29 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavbarCap from './NavbarCap';
 import CurrentPage from './CurrentPage';
 import Home from './Home';
-// import Mountains from './Mountains';
+import Menu from './Menu';
 // import Parks from './Parks';
 
 
 function App() {
   const [currentPageName, setCurrentPageName] = useState("home")
   const handleHome = () => {setCurrentPageName("home")}
+  const handleMenu = () => {setCurrentPageName("menu")}
 
   let currentPage = null;
   switch(currentPageName){
     case "home": 
       currentPage = <Home/>;
       break;
-    //placeholder for other pages
+    case "menu": 
+      currentPage = <Menu/>;
+      break;
     default: <Home/>;
   }
   return (
     
     <div>
-      <NavbarCap  handleHome={handleHome} /> 
+      <NavbarCap  handleHome={handleHome} handleMenu={handleMenu}/> 
       <div>
         <CurrentPage currentPage={currentPage} />
       </div>

@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-function NavbarCap({handleHome}){
+function NavbarCap({handleHome, handleMenu}){
 
     return (
       <Navbar expand="lg" className="navbar-background-color bg-body-tertiary">
@@ -13,6 +13,7 @@ function NavbarCap({handleHome}){
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#" onClick={handleHome}>Home</Nav.Link>
+              <Nav.Link href="#" onClick={handleMenu}>Menu</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
