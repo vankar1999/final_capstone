@@ -1,5 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+import EditButton from './EditButton';
+import DeleteButton from './DeleteButton';
 import './MenuDetails.css'
 
 
@@ -15,11 +17,8 @@ export default function MenuDetails () {
                 <Card.Text>
                     This is a chicken lollipop.
                 </Card.Text>
-                
-                <a href="#" class="btn btn-primary edit-btn">Edit</a>
-                
-                <a href="#" class="btn btn-secondary delete-btn">Delete</a>
-                
+                    <EditButton />
+                    <DeleteButton />
                 </Card.Body>
 
             </Card>

@@ -10,17 +10,3 @@ select{
     border-radius: 10px;
 }
 
-.add-button {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 2em;
-}
-
-.add-btn {
-    display: flex;
-    justify-content: center;
-    width: 10em;
-    background-color: rgb(101, 179, 247);
-    padding-left: .5em;
-    padding-right: .5em;
-}

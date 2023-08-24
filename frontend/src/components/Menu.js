@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import Card from 'react-bootstrap/Card';
 import MenuDetails from './MenuDetails'
+import AddButton from './AddButton';
 import './Menu.css'
 
 
@@ -27,11 +27,10 @@ export default function Menu() {
           ))}
         </select>
       </form>
-
-      <div class="add-button">
-        <button type="button" class="btn add-btn">Add New Item</button>
-      </div>
-
+      
+      <>
+        <AddButton />
+      </>
       <div >
         <MenuDetails />
       </div>

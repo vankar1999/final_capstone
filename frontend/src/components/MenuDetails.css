@@ -4,19 +4,3 @@
     padding-bottom: 2em;
 }
 
-.edit-btn {
-    display: flex;
-    justify-content: center;
-    width: 15em;
-    background-color: rgb(101, 179, 247);
-}
-
-.delete-btn {
-    display: flex;
-    justify-content: center;
-    width: 15em;
-    margin-top: .5em;
-    background-color: rgb(252, 97, 97);
-    border-color: brown;
-    font-weight: 500;
-}

@@ -1,0 +1,14 @@
+.add-button {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1em;
+}
+
+.add-btn {
+    display: flex;
+    justify-content: center;
+    width: 10em;
+    background-color: rgb(14, 177, 55);
+    padding-left: .5em;
+    padding-right: .5em;
+}

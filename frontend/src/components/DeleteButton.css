@@ -1,0 +1,9 @@
+.delete-btn {
+    display: flex;
+    justify-content: center;
+    width: 15em;
+    margin-top: .5em;
+    background-color: rgb(252, 97, 97);
+    border-color: brown;
+    font-weight: 500;
+}

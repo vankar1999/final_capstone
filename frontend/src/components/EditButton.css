@@ -1,0 +1,7 @@
+
+.edit-btn {
+    display: flex;
+    justify-content: center;
+    width: 15em;
+    background-color: rgb(101, 179, 247);
+}
