@@ -15,8 +15,11 @@ export default function MenuDetails () {
                 <Card.Text>
                     This is a chicken lollipop.
                 </Card.Text>
-                <a href="#" class="btn btn-primary">Edit</a>
-                <button type="button" class="btn btn-secondary">Delete</button>
+                
+                <a href="#" class="btn btn-primary edit-btn">Edit</a>
+                
+                <a href="#" class="btn btn-secondary delete-btn">Delete</a>
+                
                 </Card.Body>
 
             </Card>
