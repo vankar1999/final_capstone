@@ -12,12 +12,7 @@ app.listen(port, () =>{
     console.log(`app listening on port ${port}`)
 })
 
-// const menu = mongoose.model("menu",{    category: { type: String },
-// itemName: { type: String },
-// ingredients: { type: String },
-// price: { type: String },
-// img: { type: String }})
-
+//Current routes - subject to be moved 
 app.get("/menuitems", async (req, res) => {
     const menu2 = await Menuitems.find() 
     res.json(menu2);
