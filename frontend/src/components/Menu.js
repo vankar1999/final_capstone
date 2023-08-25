@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import MenuDetails from './MenuDetails'
-//need to create Select Category component
-import AddButton from './AddButton';
+import MenuByAppetizer from './MenuByAppetizer';
 import './Menu.css'
 
 
@@ -9,13 +7,14 @@ export default function Menu() {
   const [menuItems, setMenuItems] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
+  //fetching the menu items
   useEffect(() => {
-    // const path = "http://localhost:5000"
+    const path = "http://localhost:5000"
 
-    fetch("http://127.0.0.1:5000/menuitems")
+    fetch(`${path}/menuitems`)
         .then(menuItemsResponse => menuItemsResponse.json())
         .then(data => {
-            setMenuItems(data.menuItems);
+            setMenuItems(data);
         })
         .catch((err) => console.log(err))
     }, []);
@@ -35,18 +34,19 @@ export default function Menu() {
           setSelectedCategory(c);
         }}>
           <option disabled="" value="">Select menu category</option>
-          {categories.map(category => (
-            <option key={category} value={category}>{category}</option>
-          ))}
+          {/* drop down items */}
+          {categories.map((category) => (
+              <option key={category} value={category}>{category}</option>)
+          )}
         </select>
       </form>
-      
-      <>
-        <AddButton />
-      </>
-      <div >
-        <MenuDetails />
-      </div>
+      {
+        selectedCategory === 'Appetizer' ? 
+        <div>
+            <MenuByAppetizer selectedCategory = {selectedCategory}   menuItems = {menuItems}/> 
+        </div>
+        : null  
+      }
     </div>
   )
 }

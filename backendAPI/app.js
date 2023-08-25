@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 
 const app = express()
+app.use(cors());
 
 const Menuitems = require('./models/menuitems')
 
@@ -17,8 +18,6 @@ app.get("/menuitems", async (req, res) => {
     const menu2 = await Menuitems.find() 
     res.json(menu2);
 })
-
-app.use(cors());
 
 app.use(function (req, res) {
     const err = new Error('Not Found')
