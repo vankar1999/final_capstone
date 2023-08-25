@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import MenuByAppetizer from './MenuByAppetizer';
+import MenuByEntree from './MenuByEntree';
+import MenuByDessert from './MenuByDessert';
 import './Menu.css'
+
 
 
 export default function Menu() {
@@ -47,6 +50,23 @@ export default function Menu() {
         </div>
         : null  
       }
+
+      {
+        selectedCategory === 'Entree' ? 
+        <div>
+            <MenuByEntree selectedCategory = {selectedCategory}   menuItems = {menuItems}/> 
+        </div>
+        : null  
+      }
+
+      {
+        selectedCategory === 'Dessert' ? 
+        <div>
+            <MenuByDessert selectedCategory = {selectedCategory}   menuItems = {menuItems}/> 
+        </div>
+        : null  
+      }
+
     </div>
   )
 }

@@ -4,7 +4,6 @@ import AddButton from './AddButton';
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
 import './MenuDetails.css'
-// import './ParkDetails.css';
 
 export default function MenuByAppetizer({ selectedCategory, menuItems }) {
 
@@ -33,30 +32,6 @@ export default function MenuByAppetizer({ selectedCategory, menuItems }) {
                 ))}
             </div>
         </div>
-
-        
-        // <div className="tbd">
-        //     <table>
-        //         <thead>
-        //             <tr>
-        //                 <th>Item Name</th>
-        //                 <th>Price</th>
-        //                 <th>Ingredients</th>
-        //                 <th>Image</th>
-        //             </tr>
-        //         </thead>
-        //         <tbody>
-        //             {menuByAppetizer.map((item) => (
-        //                 <tr key={item._id}>
-        //                     <td>{item.itemName}</td>
-        //                     <td>{item.price}</td>
-        //                     <td>{item.ingredients}</td>
-        //                     <td>{item.img}</td>
-        //                 </tr>
-        //             ))}
-        //         </tbody>
-        //     </table>       
-        // </div>
     );
 }
 
