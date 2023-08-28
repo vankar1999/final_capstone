@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import AddButton from './AddButton';
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
 import './MenuDetails.css'
@@ -11,9 +10,6 @@ export default function MenuByEntree({ selectedCategory, menuItems }) {
 
     return (
         <div>
-            <>
-                <AddButton />
-            </> 
             <div className="menu-card row row-cols-2 row-cols-lg-5 row-cols-md-4 row-cols-sm-3 g-4">
                 {menuByEntree.map((item) => (
                 <Card style={{ width: '20rem' }} key={item._id}className = "card2 h-150">
