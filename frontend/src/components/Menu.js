@@ -12,7 +12,7 @@ export default function Menu() {
 
   //fetching the menu items
   useEffect(() => {
-    const path = "http://localhost:5000"
+    const path = "http://localhost:5000/api"
 
     fetch(`${path}/menuitems`)
         .then(menuItemsResponse => menuItemsResponse.json())

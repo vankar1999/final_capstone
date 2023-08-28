@@ -7,7 +7,7 @@ import './MenuDetails.css'
 
 export default function MenuByEntree({ selectedCategory, menuItems }) {
 
-    const menuByEntree = menuItems.filter(item => item.category.includes(selectedCategory));
+    const menuByEntree = menuItems.filter(item => item.category === selectedCategory);
 
     return (
         <div>

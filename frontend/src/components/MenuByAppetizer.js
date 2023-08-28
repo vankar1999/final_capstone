@@ -7,7 +7,7 @@ import './MenuDetails.css'
 
 export default function MenuByAppetizer({ selectedCategory, menuItems }) {
 
-    const menuByAppetizer = menuItems.filter(item => item.category.includes(selectedCategory));
+    const menuByAppetizer = menuItems.filter(item => item.category === selectedCategory);
 
     return (
         <div>

@@ -10,12 +10,6 @@ const Menuitems = require('./models/menuitems')
 
 app.use('/api', require('./routes')) //missing piece when using the router
 
-//Current routes - subject to be moved 
-app.get("/menuitems", async (req, res) => {
-    const menu2 = await Menuitems.find() 
-    res.json(menu2);
-})
-
 app.use(function (req, res) {
     const err = new Error('Not Found')
     err.status = 404
