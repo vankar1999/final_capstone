@@ -8,7 +8,7 @@ app.use(express.json()); //tell server that we expect to receive some sort of js
 
 const Menuitems = require('./models/menuitems')
 
-app.use('/api', require('./routes/menuitems')) //missing piece when using the router
+app.use('/api/menuitems', require('./routes/menuitems')) //missing piece when using the router
 
 app.use(function (req, res) {
     const err = new Error('Not Found')

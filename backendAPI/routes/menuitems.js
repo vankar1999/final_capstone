@@ -2,14 +2,14 @@ const router = require('express').Router();
 const Menuitems = require('../models/menuitems')
 
 //To get all items
-router.route('/menuitems').get((req,res) =>{
+router.route('/').get((req,res) =>{
     Menuitems.find()
     .then(menuitems => res.json(menuitems))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 //To ADD
-router.route('/menuitems').post((req,res) => {
+router.route('/').post((req,res) => {
     const category = req.body.category;
     const itemName = req.body.itemName;
     const ingredients = req.body.ingredients;
@@ -31,21 +31,21 @@ router.route('/menuitems').post((req,res) => {
 })
 
 //Find by ID, not used at the moment
-router.route('/menuitems/:id').get((req,res) => {
+router.route('/:id').get((req,res) => {
     Menuitems.findById(req.params.id)
     .then(menu => res.json(menu))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 //To DELETE
-router.route('/menuitems/:id').delete((req,res) => {
+router.route('/:id').delete((req,res) => {
     Menuitems.findByIdAndDelete(req.params.id)
     .then(() => res.json('Menu item deleted'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 //To UPDATE
-router.route('/menuitems/:id').put((req,res) => {
+router.route('/:id').put((req,res) => {
     Menuitems.findById(req.params.id)
     .then(menu => {
         menu.category = req.body.category;

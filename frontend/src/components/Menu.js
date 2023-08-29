@@ -6,17 +6,17 @@ import AddButton from "./AddButton";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import "./Menu.css";
 
 export default function Menu() {
   const [menuItems, setMenuItems] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
-  const fetchMenu = () => {
-    const path = "http://localhost:5000/api";
+  const path = "http://localhost:5000/api";
 
+  const fetchMenu = () => {
     fetch(`${path}/menuitems`)
       .then((menuItemsResponse) => menuItemsResponse.json())
       .then((data) => {
@@ -34,8 +34,40 @@ export default function Menu() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [category, setCategory] = useState("");
+  const [itemName, setItemName] = useState("");
+  const [ingredients, setIngredients] = useState("");
+  const [price, setPrice] = useState("");
+  const [img, setImg] = useState("");
+
   //modal code ends
   const categories = ["Appetizer", "Entree", "Dessert"];
+
+  const addMenuItem = async (e) => {
+    
+    let data = await fetch(`${path}/menuitems`, {
+      method: "POST",
+      body: JSON.stringify({ category, itemName, ingredients, price, img }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    data = await data.json();
+    console.warn(data);
+    if (data) {
+      alert("Data saved succesfully");
+      setCategory("");
+      setItemName("");
+      setIngredients("");
+      setPrice("");
+      setImg("");
+    }
+  };
+  // .then((menuItemsResponse) => menuItemsResponse.json()) //may need to go
+
+  // .then(() => {
+  //   fetchMenu();
+  // });
 
   return (
     <div>
@@ -77,12 +109,19 @@ export default function Menu() {
                 <Form>
                   <Row>
                     <Form.Group
-                      as = {Col} sm={12}
+                      as={Col}
+                      sm={12}
                       className="mb-3"
                       controlId="addForm.ControlCategory"
                     >
                       <Form.Label>Category</Form.Label>
-                      <Form.Control type="text" placeholder="" autoFocus />
+                      <Form.Control
+                        type="text"
+                        placeholder=""
+                        autoFocus
+                        onChange={(e) => setCategory(e.target.value)}
+                      />
+                     
                     </Form.Group>
                   </Row>
                   <Form.Group
@@ -90,14 +129,16 @@ export default function Menu() {
                     controlId="addForm.ControlItemName"
                   >
                     <Form.Label>Item Name</Form.Label>
-                    <Form.Control type="text" placeholder=" " autoFocus />
+                    <Form.Control type="text" placeholder=" " autoFocus
+                    onChange={(e) => setItemName(e.target.value)} />
                   </Form.Group>
                   <Form.Group
                     className="mb-3"
                     controlId="addForm.ControlIngredients"
                   >
                     <Form.Label>Ingredients</Form.Label>
-                    <Form.Control type="text" placeholder=" " autoFocus />
+                    <Form.Control type="text" placeholder=" " autoFocus 
+                    onChange={(e) => setIngredients(e.target.value)}/>
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="addForm.ControlPrice">
                     <Form.Label>Price</Form.Label>
@@ -105,11 +146,13 @@ export default function Menu() {
                       type="text"
                       placeholder="$ 00.00 "
                       autoFocus
+                      onChange={(e) => setPrice(e.target.value)}
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="addForm.ControlImg">
                     <Form.Label>Image Name</Form.Label>
-                    <Form.Control type="text" placeholder=" " autoFocus />
+                    <Form.Control type="text" placeholder=" " autoFocus 
+                    onChange={(e) => setImg(e.target.value)}/>
                   </Form.Group>
                 </Form>
               </Modal.Body>
@@ -117,7 +160,7 @@ export default function Menu() {
                 <Button variant="secondary" onClick={handleClose}>
                   Close
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
+                <Button variant="primary" onClick={() => addMenuItem()}>
                   Save Changes
                 </Button>
               </Modal.Footer>
