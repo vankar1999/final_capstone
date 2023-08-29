@@ -9,8 +9,7 @@ export default function Menu() {
   const [menuItems, setMenuItems] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
-  //fetching the menu items
-  useEffect(() => {
+  const fetchMenu = () => {
     const path = "http://localhost:5000/api";
 
     fetch(`${path}/menuitems`)
@@ -19,7 +18,10 @@ export default function Menu() {
         setMenuItems(data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }
+  
+  //fetching the menu items
+  useEffect(fetchMenu, []); //passing in the function without the call back function, which is the fetchMenu
 
   const categories = ["Appetizer", "Entree", "Dessert"];
 
@@ -59,6 +61,7 @@ export default function Menu() {
           <MenuByAppetizer
             selectedCategory={selectedCategory}
             menuItems={menuItems}
+            fetchMenu={fetchMenu}
           />
         </div>
       ) : null}

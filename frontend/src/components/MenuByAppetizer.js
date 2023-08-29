@@ -4,22 +4,7 @@ import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
 import './MenuDetails.css'
 
-export default function MenuByAppetizer({ selectedCategory, menuItems }) {
-
-    //TBD if this is needed
-    useEffect(() => {
-        deleteMenuItem();
-      }, []);
-    
-    const path = "http://localhost:5000/api";
-    const [currentMenuItems, setCurrentMenuItems] = useState([]);
-
-    const deleteMenuItem = async id => {
-    const data = await fetch(`${path}/menuitems/`+ id, {method: "DELETE"})
-        .then((menuItemsResponse) => menuItemsResponse.json());
-
-    setCurrentMenuItems(currentMenuItems => currentMenuItems.filter(currentMenuItems => currentMenuItems._id !== data.id))
-    }
+export default function MenuByAppetizer({ selectedCategory, menuItems, fetchMenu }) {
 
     const menuByAppetizer = menuItems.filter(item => item.category === selectedCategory);
 
@@ -43,8 +28,8 @@ export default function MenuByAppetizer({ selectedCategory, menuItems }) {
                                 <div>
                                     <EditButton />
                                 </div>
-                                <div onClick={() => deleteMenuItem(item._id)}>
-                                    <DeleteButton />
+                                <div> 
+                                    <DeleteButton fetchMenu={fetchMenu} id={item._id}/>
                                 </div>
                             </div>
                         </div>

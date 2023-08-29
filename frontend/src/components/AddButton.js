@@ -3,7 +3,7 @@ import './AddButton.css'
 
 export default function AddButton () {
     return (
-        <div class="add-button">
+        <div className="add-button">
             <button type="button" class="btn add-btn">Add New Item</button>
         </div>
     );
