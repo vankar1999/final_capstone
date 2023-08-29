@@ -1,13 +1,14 @@
 const router = require('express').Router();
 const Menuitems = require('../models/menuitems')
 
+//To get all items
 router.route('/menuitems').get((req,res) =>{
     Menuitems.find()
     .then(menuitems => res.json(menuitems))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-
+//To ADD
 router.route('/menuitems').post((req,res) => {
     const category = req.body.category;
     const itemName = req.body.itemName;
@@ -25,23 +26,26 @@ router.route('/menuitems').post((req,res) => {
     })
 
     newMenu.save()
-    .then(() => res.json('Menu added'))
+    .then(() => res.json('Menu item added'))
     .catch(err => res.status(400).json('Error: ' + err));
 })
 
+//Find by ID, not used at the moment
 router.route('/menuitems/:id').get((req,res) => {
     Menuitems.findById(req.params.id)
     .then(menu => res.json(menu))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
+//To DELETE
 router.route('/menuitems/:id').delete((req,res) => {
     Menuitems.findByIdAndDelete(req.params.id)
-    .then(() => res.json('Menu Deleted'))
+    .then(() => res.json('Menu item deleted'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/menuitems/:id').post((req,res) => {
+//To UPDATE
+router.route('/menuitems/:id').put((req,res) => {
     Menuitems.findById(req.params.id)
     .then(menu => {
         menu.category = req.body.category;
@@ -51,35 +55,10 @@ router.route('/menuitems/:id').post((req,res) => {
         menu.img = req.body.img;
 
         menu.save()
-        .then(() => res.json('Menu Updated'))
+        .then(() => res.json('Menu item updated'))
         .catch(err => res.status(400).json('Error: ' + err));
     })
     .catch(err => res.status(400).json('Error: ' + err));
 })
-
-
-// module.exports = function (router) {
-//     //GET
-//     router.get('/menuitems', async function (req, res) {
-//         const menu2 = await Menuitems.find() 
-//         res.json(menu2);
-
-//     }),
-
-//     //POST
-//     router.post('/menuitems', function (req, res) {
-//         const menuitem2 = new Menuitems(req.body)
-//         menuitem2.save()
-//             .then((item) => res.json(item))
-//             .catch(err => res.status(400).json('Error: ' + err));
-//     }),
-
-//     router.delete('/menuitems/:id',(req,res) => {
-//        const menu2 = await Menuitems.findById(req.params.id)
-
-//     })
-
-
-// }
 
 module.exports = router;
