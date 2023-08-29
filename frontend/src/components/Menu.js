@@ -3,6 +3,11 @@ import MenuByAppetizer from "./MenuByAppetizer";
 import MenuByEntree from "./MenuByEntree";
 import MenuByDessert from "./MenuByDessert";
 import AddButton from "./AddButton";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import "./Menu.css";
 
 export default function Menu() {
@@ -18,11 +23,18 @@ export default function Menu() {
         setMenuItems(data);
       })
       .catch((err) => console.log(err));
-  }
-  
+  };
+
   //fetching the menu items
   useEffect(fetchMenu, []); //passing in the function without the call back function, which is the fetchMenu
 
+  //modal code
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  //modal code ends
   const categories = ["Appetizer", "Entree", "Dessert"];
 
   return (
@@ -56,7 +68,60 @@ export default function Menu() {
       {selectedCategory === "Appetizer" ? (
         <div>
           <>
-            <AddButton />
+            <AddButton onClick={handleShow} />
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>New Menu Item</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Form>
+                  <Row>
+                    <Form.Group
+                      as = {Col} sm={12}
+                      className="mb-3"
+                      controlId="addForm.ControlCategory"
+                    >
+                      <Form.Label>Category</Form.Label>
+                      <Form.Control type="text" placeholder="" autoFocus />
+                    </Form.Group>
+                  </Row>
+                  <Form.Group
+                    className="mb-3"
+                    controlId="addForm.ControlItemName"
+                  >
+                    <Form.Label>Item Name</Form.Label>
+                    <Form.Control type="text" placeholder=" " autoFocus />
+                  </Form.Group>
+                  <Form.Group
+                    className="mb-3"
+                    controlId="addForm.ControlIngredients"
+                  >
+                    <Form.Label>Ingredients</Form.Label>
+                    <Form.Control type="text" placeholder=" " autoFocus />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="addForm.ControlPrice">
+                    <Form.Label>Price</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="$ 00.00 "
+                      autoFocus
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="addForm.ControlImg">
+                    <Form.Label>Image Name</Form.Label>
+                    <Form.Control type="text" placeholder=" " autoFocus />
+                  </Form.Group>
+                </Form>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </>
           <MenuByAppetizer
             selectedCategory={selectedCategory}
