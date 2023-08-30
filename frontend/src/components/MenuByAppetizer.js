@@ -31,7 +31,7 @@ export default function MenuByAppetizer({ selectedCategory, menuItems, fetchMenu
                         <div className="card-footer">
                             <div>
                                 <div>
-                                    <EditButton />
+                                    <EditButton fetchMenu={fetchMenu} categories={categories} />
                                 </div>
                                 <div> 
                                     <DeleteButton fetchMenu={fetchMenu} id={item._id}/>
