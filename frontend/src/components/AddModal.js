@@ -17,7 +17,13 @@ export default function AddModal({fetchMenu, categories, selectedCategory,show,s
 
       let data = await fetch('http://localhost:5000/api/menuitems', {
         method: "POST",
-        body: JSON.stringify({ category: selectedCategory, itemName, ingredients, price, img }),
+        body: JSON.stringify({ 
+          category: selectedCategory, 
+          itemName, 
+          ingredients, 
+          price, 
+          img 
+        }),
         headers: {
           "Content-Type": "application/json",
         },

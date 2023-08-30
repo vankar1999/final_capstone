@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Card from 'react-bootstrap/Card';
 import AddButton from './AddButton';
 import EditButton from './EditButton';
@@ -9,8 +9,10 @@ export default function MenuByAppetizer({ selectedCategory, menuItems, fetchMenu
 
     const menuByAppetizer = menuItems.filter(item => item.category === selectedCategory);
 
+    console.log(menuByAppetizer)
     console.log({categories});
     console.log({selectedCategory})
+
 
     return (
         <div>  
@@ -31,7 +33,7 @@ export default function MenuByAppetizer({ selectedCategory, menuItems, fetchMenu
                         <div className="card-footer">
                             <div>
                                 <div>
-                                    <EditButton fetchMenu={fetchMenu} categories={categories} />
+                                    <EditButton fetchMenu={fetchMenu} categories={categories} menuItems={menuItems} id={item._id}/>
                                 </div>
                                 <div> 
                                     <DeleteButton fetchMenu={fetchMenu} id={item._id}/>

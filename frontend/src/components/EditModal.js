@@ -3,17 +3,66 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-export default function EditModal({fetchMenu, categories,show,setShow,handleClose,handleShow}){
-    const [category, setCategory] = useState("");
-    const [itemName, setItemName] = useState("");
-    const [ingredients, setIngredients] = useState("");
-    const [price, setPrice] = useState("");
-    const [img, setImg] = useState("");
+export default function EditModal({
+  fetchMenu, 
+  categories,
+  show,
+  setShow,
+  handleClose,
+  handleShow, 
+  id,
+  category2,
+  itemName2,
+  ingredients2,
+  price2,
+  img2
+  
+}){
+    // const [menuItemById, setMenuItemById] = useState([]);
+
+    const [category, setCategory] = useState(category2);
+    const [itemName, setItemName] = useState(itemName2);
+    const [ingredients, setIngredients] = useState(ingredients2);
+    const [price, setPrice] = useState(price2);
+    const [img, setImg] = useState(img2);
   
     // modal code ends
 
     //edit menu item function
-    // const editMenuItem = async (e) => {
+    // const editMenuItem = async id => {
+    //   const data = await fetch('http://localhost:5000/api/menuitems/:id', {
+    //     method: "PUT",
+    //     body: JSON.stringify({
+    //       category: category, 
+    //       itemName: itemName, 
+    //       ingredients: ingredients, 
+    //       price: price, 
+    //       img: img
+    //     }),
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   }) 
+    //   .then((menuItemsResponse) => menuItemsResponse.json())
+    //   .then((data) => {
+    //     console.log(data);
+
+    //   })
+    // } 
+
+    // const fetchMenuItem = async id => {
+    //   const data = await fetch('http://localhost:5000/api/menuitems/:id', 
+    //       {method: "GET"})
+    //       .then((menuItemsResponse) => menuItemsResponse.json()) //may need to go
+    //       .then((data)=>{
+    //         setMenuItemById(data);
+    //       })
+    //       .then((data) => {
+    //             console.log(data);    
+    //       }) 
+    //       .catch((err) => console.log(err));
+    //   }
+
 
     //   let data = await fetch('http://localhost:5000/api/menuitems', {
     //     method: "POST",
@@ -77,6 +126,7 @@ return(
                       type="text"
                       placeholder=" "
                       autoFocus
+                      defaultValue={itemName}
                       onChange={(e) => setItemName(e.target.value)}
                     />
                   </Form.Group>
@@ -117,7 +167,7 @@ return(
                   Close
                 </Button>
                 <Button variant="primary" 
-                // onClick={() => addMenuItem()} 
+                // onClick={() => editMenuItem()} 
                 >
                   Save Changes
                 </Button>
