@@ -1,14 +1,22 @@
-.add-button {
+.add-justify {
     display: flex;
     justify-content: center;
     padding-bottom: 1em;
 }
 
 .add-btn {
-    display: flex;
-    justify-content: center;
-    width: 10em;
-    background-color: rgb(14, 177, 55);
-    padding-left: .5em;
-    padding-right: .5em;
+    width: 12em;
+    background-color: rgb(7, 141, 219);
+    padding: .5em .3em .5em .3em;
+    font-size: 17px;
+    font-weight: 500;
+    border-color: rgb(20, 62, 247);
+    border-width: .15em;
+}
+
+.add-btn:hover {
+    width: 12em;
+    background-color: rgb(20, 62, 247);
+    padding: .5em .3em .5em .3em;
+
 }
