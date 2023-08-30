@@ -1,15 +1,22 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+import AddButton from './AddButton';
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
 import './MenuDetails.css'
 
-export default function MenuByAppetizer({ selectedCategory, menuItems, fetchMenu }) {
+export default function MenuByAppetizer({ selectedCategory, menuItems, fetchMenu, categories }) {
 
     const menuByAppetizer = menuItems.filter(item => item.category === selectedCategory);
 
+    console.log({categories});
+    console.log({selectedCategory})
+
     return (
-        <div>     
+        <div>  
+            <div>
+                <AddButton fetchMenu={fetchMenu} categories={categories} selectedCategory={selectedCategory}/>
+            </div>   
             <div className="menu-card row row-cols-2 row-cols-lg-5 row-cols-md-4 row-cols-sm-3 g-4">
                 {menuByAppetizer.map((item) => (
                     <Card style={{ width: '20rem' }} key={item._id} className = "card2 h-150">

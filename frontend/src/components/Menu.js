@@ -28,42 +28,42 @@ export default function Menu() {
 
   // //modal code
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const [show, setShow] = useState(false);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
 
-  const [category, setCategory] = useState("");
-  const [itemName, setItemName] = useState("");
-  const [ingredients, setIngredients] = useState("");
-  const [price, setPrice] = useState("");
-  const [img, setImg] = useState("");
+  // const [category, setCategory] = useState("");
+  // const [itemName, setItemName] = useState("");
+  // const [ingredients, setIngredients] = useState("");
+  // const [price, setPrice] = useState("");
+  // const [img, setImg] = useState("");
 
   // //modal code ends
   const categories = ["Appetizer", "Entree", "Dessert"];
 
-  const addMenuItem = async (e) => {
+  // const addMenuItem = async (e) => {
 
-    let data = await fetch(`${path}/menuitems`, {
-      method: "POST",
-      body: JSON.stringify({ category: selectedCategory, itemName, ingredients, price, img }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+  //   let data = await fetch(`${path}/menuitems`, {
+  //     method: "POST",
+  //     body: JSON.stringify({ category: selectedCategory, itemName, ingredients, price, img }),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
 
-    data = await data.json();
-    console.warn(data);
-    if (data) {
-      alert("Data saved succesfully");
-      setCategory(selectedCategory);
-      setItemName("");
-      setIngredients("");
-      setPrice("");
-      setImg("");
-      handleClose();
-      fetchMenu();
-    }
-  };
+  //   data = await data.json();
+  //   console.warn(data);
+  //   if (data) {
+  //     alert("Data saved succesfully");
+  //     setCategory(selectedCategory);
+  //     setItemName("");
+  //     setIngredients("");
+  //     setPrice("");
+  //     setImg("");
+  //     handleClose();
+  //     fetchMenu();
+  //   }
+  // };
 
   return (
     <div>
@@ -93,8 +93,8 @@ export default function Menu() {
       {selectedCategory === "Appetizer" ? (
         <div>
           <>
-            <AddButton onClick={handleShow} />
-            <Modal show={show} onHide={handleClose}>
+            {/* <AddButton /> */}
+            {/* <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
                 <Modal.Title>New Menu Item</Modal.Title>
               </Modal.Header>
@@ -171,9 +171,10 @@ export default function Menu() {
                   Save Changes
                 </Button>
               </Modal.Footer>
-            </Modal>
+            </Modal> */}
           </>
           <MenuByAppetizer
+            categories={categories}
             selectedCategory={selectedCategory}
             menuItems={menuItems}
             fetchMenu={fetchMenu}
@@ -183,10 +184,8 @@ export default function Menu() {
 
       {selectedCategory === "Entree" ? (
         <div>
-          <>
-            <AddButton />
-          </>
           <MenuByEntree
+            categories={categories}
             selectedCategory={selectedCategory}
             menuItems={menuItems}
             fetchMenu={fetchMenu}
@@ -196,10 +195,8 @@ export default function Menu() {
 
       {selectedCategory === "Dessert" ? (
         <div>
-          <>
-            <AddButton />
-          </>
           <MenuByDessert
+            categories={categories}
             selectedCategory={selectedCategory}
             menuItems={menuItems}
             fetchMenu={fetchMenu}
