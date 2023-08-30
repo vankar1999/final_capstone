@@ -6,8 +6,6 @@ import AddButton from "./AddButton";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import "./Menu.css";
 
 export default function Menu() {
@@ -28,7 +26,7 @@ export default function Menu() {
   //fetching the menu items
   useEffect(fetchMenu, []); //passing in the function without the call back function, which is the fetchMenu
 
-  //modal code
+  // //modal code
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -40,34 +38,32 @@ export default function Menu() {
   const [price, setPrice] = useState("");
   const [img, setImg] = useState("");
 
-  //modal code ends
+  // //modal code ends
   const categories = ["Appetizer", "Entree", "Dessert"];
 
   const addMenuItem = async (e) => {
-    
+
     let data = await fetch(`${path}/menuitems`, {
       method: "POST",
-      body: JSON.stringify({ category, itemName, ingredients, price, img }),
+      body: JSON.stringify({ category: selectedCategory, itemName, ingredients, price, img }),
       headers: {
         "Content-Type": "application/json",
       },
-    });
+    })
+
     data = await data.json();
     console.warn(data);
     if (data) {
       alert("Data saved succesfully");
-      setCategory("");
+      setCategory(selectedCategory);
       setItemName("");
       setIngredients("");
       setPrice("");
       setImg("");
+      handleClose();
+      fetchMenu();
     }
   };
-  // .then((menuItemsResponse) => menuItemsResponse.json()) //may need to go
-
-  // .then(() => {
-  //   fetchMenu();
-  // });
 
   return (
     <div>
@@ -77,9 +73,7 @@ export default function Menu() {
         alt="food"
       />
 
-      {/* This is going to be the dropdown part of the page */}
-
-      <form>
+      <form className="categoryForm">
         <select
           onChange={(e) => {
             const c = categories?.find((x) => x === e.target.value);
@@ -89,7 +83,6 @@ export default function Menu() {
           <option disabled="" value="">
             Select menu category
           </option>
-          {/* drop down items */}
           {categories.map((category) => (
             <option key={category} value={category}>
               {category}
@@ -107,38 +100,48 @@ export default function Menu() {
               </Modal.Header>
               <Modal.Body>
                 <Form>
-                  <Row>
-                    <Form.Group
-                      as={Col}
-                      sm={12}
-                      className="mb-3"
-                      controlId="addForm.ControlCategory"
-                    >
-                      <Form.Label>Category</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder=""
-                        autoFocus
-                        onChange={(e) => setCategory(e.target.value)}
-                      />
-                     
-                    </Form.Group>
-                  </Row>
+                  <Form.Group
+                    className="mb-3"
+                    controlId="addForm.ControlCategory"
+                  >
+                    <Form.Label>Category</Form.Label>
+                    <Form.Select 
+                        onChange={(e) => {
+                          const c = categories?.find((x) => x === e.target.value);
+                          setCategory(c);
+                        }}
+                        value={category}
+                      >
+                      {categories.map((category) => (
+                        <option key={category} value={category}>
+                          {category}
+                        </option>
+                      ))}
+                    </Form.Select>
+                  </Form.Group>
                   <Form.Group
                     className="mb-3"
                     controlId="addForm.ControlItemName"
                   >
                     <Form.Label>Item Name</Form.Label>
-                    <Form.Control type="text" placeholder=" " autoFocus
-                    onChange={(e) => setItemName(e.target.value)} />
+                    <Form.Control
+                      type="text"
+                      placeholder=" "
+                      autoFocus
+                      onChange={(e) => setItemName(e.target.value)}
+                    />
                   </Form.Group>
                   <Form.Group
                     className="mb-3"
                     controlId="addForm.ControlIngredients"
                   >
                     <Form.Label>Ingredients</Form.Label>
-                    <Form.Control type="text" placeholder=" " autoFocus 
-                    onChange={(e) => setIngredients(e.target.value)}/>
+                    <Form.Control
+                      type="text"
+                      placeholder=" "
+                      autoFocus
+                      onChange={(e) => setIngredients(e.target.value)}
+                    />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="addForm.ControlPrice">
                     <Form.Label>Price</Form.Label>
@@ -151,8 +154,12 @@ export default function Menu() {
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="addForm.ControlImg">
                     <Form.Label>Image Name</Form.Label>
-                    <Form.Control type="text" placeholder=" " autoFocus 
-                    onChange={(e) => setImg(e.target.value)}/>
+                    <Form.Control
+                      type="text"
+                      placeholder=" "
+                      autoFocus
+                      onChange={(e) => setImg(e.target.value)}
+                    />
                   </Form.Group>
                 </Form>
               </Modal.Body>
@@ -160,7 +167,7 @@ export default function Menu() {
                 <Button variant="secondary" onClick={handleClose}>
                   Close
                 </Button>
-                <Button variant="primary" onClick={() => addMenuItem()}>
+                <Button variant="primary" onClick={() => addMenuItem()} >
                   Save Changes
                 </Button>
               </Modal.Footer>
@@ -182,6 +189,7 @@ export default function Menu() {
           <MenuByEntree
             selectedCategory={selectedCategory}
             menuItems={menuItems}
+            fetchMenu={fetchMenu}
           />
         </div>
       ) : null}
@@ -194,6 +202,7 @@ export default function Menu() {
           <MenuByDessert
             selectedCategory={selectedCategory}
             menuItems={menuItems}
+            fetchMenu={fetchMenu}
           />
         </div>
       ) : null}

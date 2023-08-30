@@ -4,7 +4,7 @@ import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
 import './MenuDetails.css'
 
-export default function MenuByEntree({ selectedCategory, menuItems }) {
+export default function MenuByEntree({ selectedCategory, menuItems, fetchMenu }) {
 
     const menuByEntree = menuItems.filter(item => item.category === selectedCategory);
 
@@ -24,7 +24,7 @@ export default function MenuByEntree({ selectedCategory, menuItems }) {
                     <div className="card-footer">
                         <div>
                             <EditButton />
-                            <DeleteButton />
+                            <DeleteButton fetchMenu={fetchMenu} id={item._id}/>
                         </div>
                     </div>
                 </Card>
