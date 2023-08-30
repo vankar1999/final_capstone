@@ -24,10 +24,11 @@ export default function DeleteButton({fetchMenu, id}) {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+        <div className="delete-justify" >
+            <Button className = "delete-btn" variant="primary" onClick={handleShow}>
                 Delete
             </Button>
-
+        </div>
             <Modal
                 show={show}
                 onHide={handleClose}
