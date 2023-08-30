@@ -11,20 +11,18 @@ export default function EditModal({
   handleClose,
   handleShow, 
   id,
-  category2,
-  itemName2,
-  ingredients2,
-  price2,
-  img2
-  
+  category,
+  setCategory,
+  itemName,
+  setItemName,
+  ingredients,
+  setIngredients,
+  price,
+  setPrice,
+  img,
+  setImg
 }){
-    // const [menuItemById, setMenuItemById] = useState([]);
 
-    const [category, setCategory] = useState(category2);
-    const [itemName, setItemName] = useState(itemName2);
-    const [ingredients, setIngredients] = useState(ingredients2);
-    const [price, setPrice] = useState(price2);
-    const [img, setImg] = useState(img2);
   
     // modal code ends
 
@@ -108,6 +106,7 @@ return(
                           setCategory(c);
                         }}
                         value={category}
+                        defaultValue={category}
                       >
                       {categories.map((category) => (
                         <option key={category} value={category}>
@@ -139,6 +138,7 @@ return(
                       type="text"
                       placeholder=" "
                       autoFocus
+                      defaultValue={ingredients}
                       onChange={(e) => setIngredients(e.target.value)}
                     />
                   </Form.Group>
@@ -148,6 +148,7 @@ return(
                       type="text"
                       placeholder="$ 00.00 "
                       autoFocus
+                      defaultValue={price}
                       onChange={(e) => setPrice(e.target.value)}
                     />
                   </Form.Group>
@@ -157,6 +158,7 @@ return(
                       type="text"
                       placeholder=" "
                       autoFocus
+                      defaultValue={img}
                       onChange={(e) => setImg(e.target.value)}
                     />
                   </Form.Group>

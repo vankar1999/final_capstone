@@ -76,10 +76,21 @@ export default function EditButton ({ fetchMenu, categories, menuItems, id }) {
                 handleClose={handleClose} 
                 handleShow={handleShow} 
                 id={id}
+                // category2={updatedItem.category}
+                // itemName2={updatedItem.itemName}
+                // ingredients2={updatedItem.ingredients}
+                // price2={updatedItem.price}
+                // img2={updatedItem.img}
                 category={category}
                 setCategory={setCategory}
                 itemName={itemName}
                 setItemName={setItemName}
+                ingredients={ingredients}
+                setIngredients={setIngredients}
+                price={price}
+                setPrice={setPrice}
+                img={img}
+                setImg={setImg}
 
 
             />
