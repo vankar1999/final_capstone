@@ -5,6 +5,7 @@ import NavbarCap from './NavbarCap';
 import CurrentPage from './CurrentPage';
 import Home from './Home';
 import Menu from './Menu';
+import Login from './Login';
 // import Parks from './Parks';
 
 
@@ -12,6 +13,7 @@ function App() {
   const [currentPageName, setCurrentPageName] = useState("home")
   const handleHome = () => {setCurrentPageName("home")}
   const handleMenu = () => {setCurrentPageName("menu")}
+  const handleLogin = () => {setCurrentPageName("login")}
 
   let currentPage = null;
   switch(currentPageName){
@@ -21,12 +23,15 @@ function App() {
     case "menu": 
       currentPage = <Menu/>;
       break;
-    default: <Home/>;
+    case "login": 
+      currentPage = <Login/>;
+      break;
+    default: <Login/>;
   }
   return (
     
     <div>
-      <NavbarCap  handleHome={handleHome} handleMenu={handleMenu}/> 
+      <NavbarCap  handleHome={handleHome} handleMenu={handleMenu} handleLogin={handleLogin}/> 
 
         <CurrentPage currentPage={currentPage} />
 
