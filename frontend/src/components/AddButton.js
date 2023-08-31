@@ -5,7 +5,6 @@ import "./AddButton.css";
 
 export default function AddButton({ fetchMenu, categories, selectedCategory }) {
   // modal code
-
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

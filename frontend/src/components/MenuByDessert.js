@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import Card from 'react-bootstrap/Card';
 import AddButton from './AddButton';
 import EditButton from './EditButton';
@@ -8,7 +8,7 @@ import './MenuDetails.css'
 export default function MenuByDessert({ selectedCategory, menuItems, fetchMenu, categories }) {
 
     const menuByDessert = menuItems.filter(item => item.category === selectedCategory);
-
+    
     return (
         <div>
             <div>
@@ -27,7 +27,7 @@ export default function MenuByDessert({ selectedCategory, menuItems, fetchMenu, 
                     </Card.Body>
                     <div className="card-footer">
                             <div>
-                                <EditButton />
+                                <EditButton fetchMenu={fetchMenu} categories={categories} menuItems={menuItems} id={item._id}/>
                                 <DeleteButton fetchMenu={fetchMenu} id={item._id}/>
                             </div>
                     </div>

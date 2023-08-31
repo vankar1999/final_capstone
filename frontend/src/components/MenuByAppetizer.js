@@ -8,7 +8,6 @@ import './MenuDetails.css'
 export default function MenuByAppetizer({ selectedCategory, menuItems, fetchMenu, categories }) {
 
     const menuByAppetizer = menuItems.filter(item => item.category === selectedCategory);
-
     console.log(menuByAppetizer)
     console.log({categories});
     console.log({selectedCategory})

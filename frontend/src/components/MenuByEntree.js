@@ -27,7 +27,7 @@ export default function MenuByEntree({ selectedCategory, menuItems, fetchMenu, c
                     </Card.Body>
                     <div className="card-footer">
                         <div>
-                            <EditButton />
+                            <EditButton fetchMenu={fetchMenu} categories={categories} menuItems={menuItems} id={item._id} />
                             <DeleteButton fetchMenu={fetchMenu} id={item._id}/>
                         </div>
                     </div>

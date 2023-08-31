@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
 export default function AddModal({fetchMenu, categories, selectedCategory,show,setShow,handleClose,handleShow}){
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState(selectedCategory);
     const [itemName, setItemName] = useState("");
     const [ingredients, setIngredients] = useState("");
     const [price, setPrice] = useState("");
