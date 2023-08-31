@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MenuByAppetizer from "./MenuByAppetizer";
-import MenuByEntree from "./MenuByEntree";
-import MenuByDessert from "./MenuByDessert";
+import MenuByCategory from "./MenuByCategory";
 import "./Menu.css";
 
 export default function Menu() {
@@ -51,11 +49,9 @@ export default function Menu() {
           ))}
         </select>
       </form>
-      {/* {selectedCategory === null ?
-      null: */}
       {selectedCategory && (
         <div>
-          <MenuByAppetizer
+          <MenuByCategory
             categories={categories}
             selectedCategory={selectedCategory}
             menuItems={menuItems}
@@ -63,28 +59,6 @@ export default function Menu() {
           />
         </div>
       ) }
-
-      {/* {selectedCategory === "Entree" ? (
-        <div>
-          <MenuByEntree
-            categories={categories}
-            selectedCategory={selectedCategory}
-            menuItems={menuItems}
-            fetchMenu={fetchMenu}
-          />
-        </div>
-      ) : null}
-
-      {selectedCategory === "Dessert" ? (
-        <div>
-          <MenuByDessert
-            categories={categories}
-            selectedCategory={selectedCategory}
-            menuItems={menuItems}
-            fetchMenu={fetchMenu}
-          />
-        </div>
-      ) : null} */}
     </div>
   );
 }

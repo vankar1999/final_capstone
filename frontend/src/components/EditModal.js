@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -42,11 +42,7 @@ export default function EditModal({
           "Content-Type": "application/json",
         },
       }) 
-      //.then((menuItemsResponse) => menuItemsResponse.json())
-      // .then((data) => {
-      //   console.log(data);
 
-      // })
       data = await data.json();
       console.warn(data);
       if (data) {
@@ -60,42 +56,6 @@ export default function EditModal({
         fetchMenu();
       }
     } 
-
-    // const fetchMenuItem = async id => {
-    //   const data = await fetch('http://localhost:5000/api/menuitems/:id', 
-    //       {method: "GET"})
-    //       .then((menuItemsResponse) => menuItemsResponse.json()) //may need to go
-    //       .then((data)=>{
-    //         setMenuItemById(data);
-    //       })
-    //       .then((data) => {
-    //             console.log(data);    
-    //       }) 
-    //       .catch((err) => console.log(err));
-    //   }
-
-
-    //   let data = await fetch('http://localhost:5000/api/menuitems', {
-    //     method: "POST",
-    //     body: JSON.stringify({ category: selectedCategory, itemName, ingredients, price, img }),
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   })
-  
-    //   data = await data.json();
-    //   console.warn(data);
-    //   if (data) {
-    //     alert("Data saved succesfully");
-    //     setCategory(selectedCategory);
-    //     setItemName("");
-    //     setIngredients("");
-    //     setPrice("");
-    //     setImg("");
-    //     handleClose();
-    //     fetchMenu();
-    //   }
-    // };
 
     console.log({categories});
 
@@ -112,7 +72,6 @@ return(
                     controlId="editForm.ControlCategory"
                   >
                     <Form.Label>Category</Form.Label>
-                    {/* Current set up of the form select does not default the value for us. Appetizer will always show first bc that is the first thing in the categories array */}
                     <Form.Select
                         onChange={(e) => {
                           const c = categories?.find((x) => x === e.target.value);
@@ -151,8 +110,10 @@ return(
                       type="text"
                       placeholder=" "
                       autoFocus
+                      as="textarea"
                       defaultValue={ingredients}
-                      onChange={(e) => setIngredients(e.target.value)}
+                      onChange={(e) => setIngredients(e.target.value)
+                      }
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="editForm.ControlPrice">

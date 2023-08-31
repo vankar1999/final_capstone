@@ -1,3 +1,17 @@
+.jumbotron-detail-food-spread {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://imagedelivery.net/WLUarKbmUXuuhDC7PG5_Qw/seo/cad39ed25806987c88d2881af39a130e.jpg/public) no-repeat fixed;
+    
+}
+
+.jumbotron {
+    height: 100vh;
+    background-size: cover;
+    /* margin-top: 40px; */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
 .homeDescription {
     font-size: 14px;
     background-color: aliceblue;

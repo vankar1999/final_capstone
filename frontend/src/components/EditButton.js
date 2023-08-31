@@ -24,38 +24,6 @@ export default function EditButton ({ fetchMenu, categories, menuItems, id }) {
 
     console.log(id);
 
-    // const fetchMenuItem = async id => {
-    //     const data = await fetch('http://localhost:5000/api/menuitems/'+ id, 
-    //         {method: "GET"})
-    //             //     body: JSON.stringify({
-    //             //       category: category, 
-    //             //       itemName: itemName, 
-    //             //       ingredients: ingredients, 
-    //             //       price: price, 
-    //             //       img: img
-    //             //     }),
-    //             //     headers: {
-    //             //       "Content-Type": "application/json",
-    //             //     },
-    //             //   }) 
-    //               .then((menuItemsResponse) => menuItemsResponse.json())
-    //               .then((data) => {
-    //                 console.log(data);
-            
-    //               })
-            
-            // {method: "PUT"})
-            // .then((menuItemsResponse) => menuItemsResponse.json()) //may need to go
-            // .then((data)=>{
-            //   setMenuItemById(data);
-            // })
-            // .then((data) => {
-            //       console.log(data);    
-            // }) 
-        //     // .catch((err) => console.log(err))
-        //     handleShow();
-        // }
-
     console.log({categories})
 
     return (

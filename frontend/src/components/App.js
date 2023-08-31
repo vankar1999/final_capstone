@@ -27,9 +27,9 @@ function App() {
     
     <div>
       <NavbarCap  handleHome={handleHome} handleMenu={handleMenu}/> 
-      <div>
+
         <CurrentPage currentPage={currentPage} />
-      </div>
+
     </div>
     
  );
