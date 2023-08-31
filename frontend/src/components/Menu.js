@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MenuByCategory from "./MenuByCategory";
-import "./Menu.css";
+import './Menu.css'
 
 export default function Menu() {
   const [menuItems, setMenuItems] = useState([]);
@@ -20,45 +20,44 @@ export default function Menu() {
   //fetching the menu items
   useEffect(fetchMenu, []); //passing in the function without the call back function, which is the fetchMenu
 
-  
+
   const categories = ["Appetizer", "Entree", "Dessert"];
 
-  
+
   return (
     <div>
-      <h1>Menu</h1>
-      <img
-        src="https://imagedelivery.net/WLUarKbmUXuuhDC7PG5_Qw/seo/cad39ed25806987c88d2881af39a130e.jpg/public"
-        alt="food"
-      />
-
-      <form className="categoryForm">
-        <select
-          onChange={(e) => {
-            const c = categories?.find((x) => x === e.target.value);
-            setSelectedCategory(c);
-          }}
-        >
-          <option disabled="" value="">
-            Select menu category
-          </option>
-          {categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
+      <div className="menu-title">
+        <h1>Menu</h1>
+      </div>
+      <div className="menu-background-image">
+        <form className="categoryForm">
+          <select
+            onChange={(e) => {
+              const c = categories?.find((x) => x === e.target.value);
+              setSelectedCategory(c);
+            }}
+          >
+            <option disabled="" value="">
+              Select menu category
             </option>
-          ))}
-        </select>
-      </form>
-      {selectedCategory && (
-        <div>
-          <MenuByCategory
-            categories={categories}
-            selectedCategory={selectedCategory}
-            menuItems={menuItems}
-            fetchMenu={fetchMenu}
-          />
-        </div>
-      ) }
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </form>
+        {selectedCategory && (
+          <div>
+            <MenuByCategory
+              categories={categories}
+              selectedCategory={selectedCategory}
+              menuItems={menuItems}
+              fetchMenu={fetchMenu}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
