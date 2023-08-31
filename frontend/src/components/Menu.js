@@ -51,7 +51,9 @@ export default function Menu() {
           ))}
         </select>
       </form>
-      {selectedCategory === "Appetizer" ? (
+      {/* {selectedCategory === null ?
+      null: */}
+      {selectedCategory && (
         <div>
           <MenuByAppetizer
             categories={categories}
@@ -60,9 +62,9 @@ export default function Menu() {
             fetchMenu={fetchMenu}
           />
         </div>
-      ) : null}
+      ) }
 
-      {selectedCategory === "Entree" ? (
+      {/* {selectedCategory === "Entree" ? (
         <div>
           <MenuByEntree
             categories={categories}
@@ -82,7 +84,7 @@ export default function Menu() {
             fetchMenu={fetchMenu}
           />
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   );
 }

@@ -14,7 +14,7 @@ export default function DeleteButton({fetchMenu, id}) {
     console.log(id);
 
     //since we pass the id in the DeleteButton function, we don't need the id here, but can leave as is
-    const deleteMenuItem = async id => {
+    const deleteMenuItem = async () => {
         const data = await fetch(`${path}/menuitems/`+ id, {method: "DELETE"})
             .then((menuItemsResponse) => menuItemsResponse.json()) //may need to go
             .then(()=>{
@@ -45,7 +45,7 @@ export default function DeleteButton({fetchMenu, id}) {
                     <Button variant="secondary" onClick={handleClose}>
                         Nevermind
                     </Button>
-                    <Button variant="primary" onClick={ () =>deleteMenuItem(id) } >
+                    <Button variant="primary" onClick={ deleteMenuItem } >
                         Yes, delete
                     </Button>
                 </Modal.Footer>

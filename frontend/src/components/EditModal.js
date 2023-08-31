@@ -21,32 +21,45 @@ export default function EditModal({
   setPrice,
   img,
   setImg
-}){
+})
 
   
     // modal code ends
 
     //edit menu item function
-    // const editMenuItem = async id => {
-    //   const data = await fetch('http://localhost:5000/api/menuitems/:id', {
-    //     method: "PUT",
-    //     body: JSON.stringify({
-    //       category: category, 
-    //       itemName: itemName, 
-    //       ingredients: ingredients, 
-    //       price: price, 
-    //       img: img
-    //     }),
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   }) 
-    //   .then((menuItemsResponse) => menuItemsResponse.json())
-    //   .then((data) => {
-    //     console.log(data);
+    {
+    const editMenuItem = async () => {
+      let data = await fetch(`http://localhost:5000/api/menuitems/` + id, {
+        method: "PUT",
+        body: JSON.stringify({
+          category: category, 
+          itemName: itemName, 
+          ingredients: ingredients, 
+          price: price, 
+          img: img
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }) 
+      //.then((menuItemsResponse) => menuItemsResponse.json())
+      // .then((data) => {
+      //   console.log(data);
 
-    //   })
-    // } 
+      // })
+      data = await data.json();
+      console.warn(data);
+      if (data) {
+        alert("Data saved succesfully");
+        setCategory(category);
+        setItemName(itemName);
+        setIngredients(ingredients);
+        setPrice(price);
+        setImg(img);
+        handleClose();
+        fetchMenu();
+      }
+    } 
 
     // const fetchMenuItem = async id => {
     //   const data = await fetch('http://localhost:5000/api/menuitems/:id', 
@@ -169,7 +182,7 @@ return(
                   Close
                 </Button>
                 <Button variant="primary" 
-                // onClick={() => editMenuItem()} 
+                onClick={editMenuItem}
                 >
                   Save Changes
                 </Button>
@@ -177,6 +190,5 @@ return(
             </Modal>
     </div>
 )
-
 
 }
