@@ -97,6 +97,7 @@ return(
                       type="text"
                       placeholder=" "
                       autoFocus
+                      as="textarea"
                       onChange={(e) => setIngredients(e.target.value)}
                     />
                   </Form.Group>

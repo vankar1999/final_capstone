@@ -45,7 +45,7 @@ export default function DeleteButton({fetchMenu, id}) {
                     <Button variant="secondary" onClick={handleClose}>
                         Nevermind
                     </Button>
-                    <Button variant="primary" onClick={ deleteMenuItem } >
+                    <Button className="delete-button" variant="primary" onClick={ deleteMenuItem } >
                         Yes, delete
                     </Button>
                 </Modal.Footer>
