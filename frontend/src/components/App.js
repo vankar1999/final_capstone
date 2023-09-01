@@ -24,7 +24,7 @@ function App() {
       currentPage = <Menu/>;
       break;
     case "login": 
-      currentPage = <Login/>;
+      currentPage = <Login handleHome={handleHome}/>;
       break;
     default: <Login/>;
   }

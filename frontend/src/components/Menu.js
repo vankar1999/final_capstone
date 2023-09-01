@@ -27,7 +27,7 @@ export default function Menu() {
   return (
     <div>
       <div className="menu-title">
-        <h1>Menu</h1>
+        <h1 className="menu-h1">Menu</h1>
       </div>
       <div className="menu-background-image">
         <form className="categoryForm">
