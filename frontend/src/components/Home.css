@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,700&display=swap');
+
 .jumbotron-detail-food-spread {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://imagedelivery.net/WLUarKbmUXuuhDC7PG5_Qw/seo/cad39ed25806987c88d2881af39a130e.jpg/public) no-repeat fixed;
     
@@ -26,6 +28,7 @@ img {
 
 .welcome-greeting {
     color: whitesmoke;
+    font-family: "Montserrat",sans-serif;
 }
 
 .quote {
@@ -34,8 +37,10 @@ img {
     font-style: italic;
     margin-left: 4em;
     margin-right: 4em;
+    font-family: "Montserrat",sans-serif;
 }
 
 .author {
     font-size: 20px;
+    font-family: "Montserrat",sans-serif;
 }
